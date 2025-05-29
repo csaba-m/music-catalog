@@ -5,7 +5,7 @@ namespace MusicCatalog;
 
 [ApiController]
 [Route("songs")]
-public class SongsController() : ControllerBase
+public class SongsController : ControllerBase
 {
     [HttpGet("{id:int}")]
     [ProducesResponseType<SongResponse>(StatusCodes.Status200OK)]
