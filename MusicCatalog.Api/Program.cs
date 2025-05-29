@@ -8,8 +8,11 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-var dbcontext = app.Services.GetRequiredService<MusicCatalogDbContext>();
-dbcontext.Database.EnsureCreated();
+using(var scope = app.Services.CreateScope())
+{
+    var dbcontext = scope.ServiceProvider.GetRequiredService<MusicCatalogDbContext>();
+    dbcontext.Database.EnsureCreated();
+}
 
 app.MapControllers();
 
